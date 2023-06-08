@@ -27,3 +27,27 @@ Remember, full e2e UI automated tests tend to have long execution times and high
 A comprise solution is to use stubbing to verify the correct behaviour of the UI in isolation from the backend. These tests should be significantly faster and more robust than full e2e tests. 
 
 Combining full coverage (all 24 TCs) by stubbed tests, with a few full e2e test flows will provide adaquate coverage to comply with the test objectives.
+
+## Test Implementation
+We implement two categories of test case: Stubbed test cases which will provide full coverage of the All-pairs generated cases, and full end-to-end scenarios.
+
+In general we abstract UI interactions as much as possible (cypress Commands) to ensure the test code is maintainable, readable, and easily extensible. These abstractions are implemented in the e2e/helpers folder.
+### Stubbed Tests
+
+For the purposes of this demo, we limit he scope to intercepting and verifying the *schema* creation action. In reality, we would also stub *content* creation to provide coverage for that functionality.
+
+The basic flow for each test case is the same:
+1.	create a new schema
+2.	add the field under test, applying various options
+3.	intercept the createSimpleFieldMutation API call 
+4.	verify correctness of the request body
+
+See saveFieldStubbed() function in schemaHelpers [schemaHelpers.js](/cypress/e2e/helpers/schemaHelpers.js)
+for details of request interception and verification. Note the call to constructExpectedAddFieldRq() to dynamically generate the expected request body based on the tc data
+
+Because the basic flow is the same for each test case, we can apply Data Driven test techniques to make the code more maintainable and facilitate easy addition of new testcases.
+Test case data is defined in [allPairsTests.json](/cypress/fixtures/allPairsTests.json).
+The core engine for loading the test suite and executing the test steps is at  [stubbedTests.cy.js](/cypress/e2e/stubbedTests.cy.js)
+
+The first 10 test cases of the planned 24 have been implemented.
+
