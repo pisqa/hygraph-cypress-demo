@@ -1,0 +1,30 @@
+{
+    "operationName": "createSimpleFieldMutation",
+    "variables": {
+        "data": {
+            "parentId": "",
+            "type": "STRING",
+            "formConfig": {
+                "renderer": "GCMS_MULTI_LINE",
+                "config": {}
+            },
+            "tableConfig": {
+                "renderer": "GCMS_MULTI_LINE",
+                "config": {}
+            },
+            "displayName": "",
+            "apiId": "",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isLocalized": false,
+            "visibility": "",
+            "isTitle": false,
+            "description": "",
+            "validations": {
+                "String": {}
+            }
+        }
+    },
+    "query": "mutation createSimpleFieldMutation($data: CreateSimpleFieldInput!) {\n  createField: createSimpleField(data: $data) {\n    migration {\n      ...MigrationFragment\n      __typename\n    }\n    __typename\n  }\n}\n\nfragment MigrationFragment on Migration {\n  id\n  createdAt\n  finishedAt\n  status\n  errors\n  operationType\n  resourceId\n  triggeredBy {\n    id\n    __typename\n  }\n  __typename\n}\n"
+}

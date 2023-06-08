@@ -1,0 +1,16 @@
+Type:           Single line text, Multi Line Text, Markdown
+Title:          Yes, No
+Multiple:       No, Yes-unlimited, Yes-At least, Yes-Between, Yes-Not more than
+Localize:       Yes, No
+Limit:          No limit, At least, Between, Not more than
+Required:       Yes, No
+Unique:         Yes, No
+Match:          Yes, No
+Restrict:       Yes, No
+Initial:        Yes, No
+Visibility:     RW, RO, Hidden, API
+
+IF [Title] = "Yes" THEN [Multiple] = "No";
+IF [Visibility] = "Hidden" OR [Visibility] = "API" THEN [Title] = "No";
+IF [Initial] = "Yes" THEN [Visibility] <> "API";
+IF [Localize] = "Yes" THEN [Initial] = "No";

@@ -1,0 +1,384 @@
+{
+    "testSuite": [
+        {
+            "tcTitle": "TC01",
+            "fieldType": "Single line text",
+            "apiId": "tc01",
+            "displayName": "TC01",
+            "description": "TC01 description",
+            "options": {
+                "useAsTitle": false,
+                "allowMultiple": {
+                    "active": true,
+                    "limitType": "between",
+                    "min": 4,
+                    "max": 40,
+                    "customMessage": "Enter at between 4-40 entries"
+                },
+                "localize": false,
+                "charLimit": {
+                    "limitType": "none"
+                },
+                "required": true,
+                "setUnique": false,
+                "matchPattern": {
+                    "type": "NONE"
+                },
+                "restrictPattern": {
+                    "active": true,
+                    "pattern": "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?",
+                    "caseInsensitive": false,
+                    "multiLine": false,
+                    "singlelIne": true,
+                    "customMessage": "this is a very long custom message (Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in erat eu nibh semper ullamcorper. Vestibulum ac sagittis odio, vitae blandit nunc. Curabitur a eros interdum, euismod erat vitae, efficitur enim. Duis sed tincidunt enim. Aliquam lobortis ultricies blandit. Cras ut dolor dolor. Mauris pharetra lorem quis sapien elementum, eu placerat enim vulputate. Mauris in efficitur nibh. Mauris quis risus sit amet odio cursus suscipit ac a arcu. Curabitur dapibus congue est eu condimentum. Fusce ultrices pharetra mauris, non sagittis risus viverra nec. )"
+                },
+                "initialValue": {
+                    "initial": false
+                },
+                "visibility": "Hidden"
+            }
+        },
+        {
+            "tcTitle": "TC02",
+            "fieldType": "Markdown",
+            "apiId": "tc02",
+            "displayName": "TC02",
+            "description": "TC02 description",
+            "options": {
+                "useAsTitle": true,
+                "allowMultiple": {
+                    "active": false
+                },
+                "localize": false,
+                "charLimit": {
+                    "limitType": "between",
+                    "min": 10,
+                    "max": 100,
+                    "customMessage": "Must be between 10 & 100 characters"
+                },
+                "required": true,
+                "setUnique": true,
+                "matchPattern": {
+                    "type": "Email",
+                    "caseInsensitive": false,
+                    "multiLine": true,
+                    "singleLine": false,
+                    "customMessage": "Please enter a valid Email"
+                },
+                "restrictPattern": {
+                    "active": false
+                },
+                "initialValue": {
+                    "initial": true,
+                    "value": "somebody@somewhere.io"
+                },
+                "visibility": "Read / Write"
+            }
+
+     
+        },
+        {
+            "tcTitle": "TC03",
+            "fieldType": "Multi line text",
+            "apiId": "tc03",
+            "displayName": "TC03",
+            "description": "TC03 description",
+            "options": {
+                "useAsTitle": false,
+                "allowMultiple": {
+                    "active": true,
+                    "limitType": "notMoreThan",
+                    "max": 4000,
+                    "customMessage": "Enter at most 4000 entries"
+                },
+                "localize": true,
+                "charLimit": {
+                    "limitType": "atLeast",
+                    "min": 100,
+                    "customMessage": "Must be at least 100 characters"
+                },
+                "required": true,
+                "setUnique": false,
+                "matchPattern": {
+                    "type": "URL",
+                    "caseInsensitive": false,
+                    "multiLine": false,
+                    "singleLine": false,
+                    "customMessage": "Please enter a valid URL"
+                },
+                "restrictPattern": {
+                    "active": false
+                },
+                "initialValue": {
+                    "initial": false
+                },
+                "visibility": "Read only"
+            }
+
+     
+        },
+        {
+            "tcTitle": "TC04",
+            "fieldType": "Markdown",
+            "apiId": "tc04",
+            "displayName": "TC04",
+            "description": "TC04 description",
+            "options": {
+                "useAsTitle": false,
+                "allowMultiple": {
+                    "active": false
+                },
+                "localize": true,
+                "charLimit": {
+                    "limitType": "none"
+                },
+                "required": false,
+                "setUnique": true,
+                "matchPattern": {
+                    "type": "URL",
+                    "caseInsensitive": true,
+                    "multiLine": true,
+                    "singleLine": false,
+                    "customMessage": "Please enter a valid URL"
+                },
+                "restrictPattern": {
+                    "active": true,
+                    "pattern": "some pattern",
+                    "caseInsensitive": true,
+                    "multiLine": true,
+                    "singlelIne": false,
+                    "customMessage": "please avoid the pattern!"
+                },
+                "initialValue": {
+                    "initial": false
+                },
+                "visibility": "API only"
+            }     
+        },
+        {
+            "tcTitle": "TC05",
+            "fieldType": "Multi line text",
+            "apiId": "tc05",
+            "displayName": "TC05",
+            "description": "TC05 description",
+            "options": {
+                "useAsTitle": false,
+                "allowMultiple": {
+                    "active": true,
+                    "limitType": "atLeast",
+                    "min": 4,
+                    "customMessage": "Enter at least 4 entries"
+                },
+                "localize": false,
+                "charLimit": {
+                    "limitType": "atLeast",
+                    "min": 123,
+                    "customMessage": "Must be at least 123 characters"
+                },
+                "required": true,
+                "setUnique": true,
+                "matchPattern": {
+                    "type": "NONE"
+                },
+                "restrictPattern": {
+                    "active": true,
+                    "pattern": "some pattern",
+                    "caseInsensitive": false,
+                    "multiLine": true,
+                    "singlelIne": false,
+                    "customMessage": "please avoid the pattern!"
+                },
+                "initialValue": {
+                    "initial": true,
+                    "value": "this is a very long initial value (Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in erat eu nibh semper ullamcorper. Vestibulum ac sagittis odio, vitae blandit nunc. Curabitur a eros interdum, euismod erat vitae, efficitur enim. Duis sed tincidunt enim. Aliquam lobortis ultricies blandit. Cras ut dolor dolor. Mauris pharetra lorem quis sapien elementum, eu placerat enim vulputate. Mauris in efficitur nibh. Mauris quis risus sit amet odio cursus suscipit ac a arcu. Curabitur dapibus congue est eu condimentum. Fusce ultrices pharetra mauris, non sagittis risus viverra nec. )"
+                },
+                "visibility": "Read / Write"
+            }     
+        },
+        {
+            "tcTitle": "TC06",
+            "fieldType": "Single line text",
+            "apiId": "tc6",
+            "displayName": "TC6",
+            "description": "TC6 description",
+            "options": {
+                "useAsTitle": false,
+                "allowMultiple": {
+                    "active": true,
+                    "limitType": "atLeast",
+                    "min": 4,
+                    "customMessage": "Enter at least 4 entries"
+                },
+                "localize": true,
+                "charLimit": {
+                    "limitType": "between",
+                    "min": 10,
+                    "max": 100,
+                    "customMessage": "have another go!"
+                },
+                "required": false,
+                "setUnique": false,
+                "matchPattern": {
+                    "type": "NONE"
+                },
+                "restrictPattern": {
+                    "active": true,
+                    "pattern": "some pattern",
+                    "caseInsensitive": true,
+                    "multiLine": false,
+                    "singlelIne": false,
+                    "customMessage": "please avoid the pattern!"
+                },
+                "initialValue": {
+                    "initial": false
+                },
+                "visibility": "Read only"
+            }
+        },
+        {
+            "tcTitle": "TC07",
+            "fieldType": "Single line text",
+            "apiId": "tc7",
+            "displayName": "TC7",
+            "description": "TC7 description",
+            "options": {
+                "useAsTitle": false,
+                "allowMultiple": {
+                    "active": true,
+                    "limitType": "notMoreThan",
+                    "max": 4,
+                    "customMessage": "Enter at most 4 entries"
+                },
+                "localize": false,
+                "charLimit": {
+                    "limitType": "none"
+                },
+                "required": false,
+                "setUnique": false,
+                "matchPattern": {
+                    "type": "NONE"
+                },
+                "restrictPattern": {
+                    "active": false
+                },
+                "initialValue": {
+                    "initial": true,
+                    "value": "this is a very long initial value (Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in erat eu nibh semper ullamcorper. Vestibulum ac sagittis odio, vitae blandit nunc. Curabitur a eros interdum, euismod erat vitae, efficitur enim. Duis sed tincidunt enim. Aliquam lobortis ultricies blandit. Cras ut dolor dolor. Mauris pharetra lorem quis sapien elementum, eu placerat enim vulputate. Mauris in efficitur nibh. Mauris quis risus sit amet odio cursus suscipit ac a arcu. Curabitur dapibus congue est eu condimentum. Fusce ultrices pharetra mauris, non sagittis risus viverra nec. )"
+                },
+                "visibility": "Read / Write"
+            }
+        },
+        {
+            "tcTitle": "TC08",
+            "fieldType": "Markdown",
+            "apiId": "tc8",
+            "displayName": "TC8",
+            "description": "TC8 description",
+            "options": {
+                "useAsTitle": false,
+                "allowMultiple": {
+                    "active": true,
+                    "limitType": "between",
+                    "min": 1,
+                    "max": 4,
+                    "customMessage": "This is a long custom message (Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in erat eu nibh semper ullamcorper. Vestibulum ac sagittis odio, vitae blandit nunc. Curabitur a eros interdum, euismod erat vitae, efficitur enim. Duis sed tincidunt enim. Aliquam lobortis ultricies blandit. Cras ut dolor dolor. Mauris pharetra lorem quis sapien elementum, eu placerat enim vulputate. Mauris in efficitur nibh. Mauris quis risus sit amet odio cursus suscipit ac a arcu. Curabitur dapibus congue est eu condimentum. Fusce ultrices pharetra mauris, non sagittis risus viverra nec.)"
+                },
+                "localize": true,
+                "charLimit": {
+                    "limitType": "notMoreThan",
+                    "max": 19,
+                    "customMessage": "A message with some random special characters (Ññ&%$€$<^_-[]+*?¿@çÇäöüß)"
+                },
+                "required": true,
+                "setUnique": false,
+                "matchPattern": {
+                    "type": "NONE"
+                },
+                "restrictPattern": {
+                    "active": false
+                },
+                "initialValue": {
+                    "initial": false
+                },
+                "visibility": "API only"
+            }
+        },
+        {
+            "tcTitle": "TC09",
+            "fieldType": "Single line text",
+            "apiId": "apiId_with_64_chars_ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklm_END",
+            "displayName": "TC9, with special chars(Ññ&%$€$<^_-[]+*?¿@çÇäöüß)",
+            "description": "TC9 description",
+            "options": {
+                "useAsTitle": false,
+                "allowMultiple": {
+                    "active": true,
+                    "limitType": "notMoreThan",
+                    "max": 55,
+                    "customMessage": "Max 55 entries"
+                },
+                "localize": false,
+                "charLimit": {
+                    "limitType": "notMoreThan",
+                    "max": 70,
+                    "customMessage": "Max 70 chars!"
+                },
+                "required": false,
+                "setUnique": true,
+                "matchPattern": {
+                    "type": "Slug",
+                    "caseInsensitive": true,
+                    "multiLine": true,
+                    "singleLine": true,
+                    "customMessage": "Please enter a valid slug"
+                },
+                "restrictPattern": {
+                    "active": true,
+                    "pattern": "some pattern",
+                    "caseInsensitive": false,
+                    "multiLine": true,
+                    "singlelIne": false,
+                    "customMessage": "please avoid the pattern!"
+                },
+                "initialValue": {
+                    "initial": true,
+                    "value": "hello-world"
+                },
+                "visibility": "Hidden"
+            }
+        },
+        {
+            "tcTitle": "TC10",
+            "fieldType": "Multi line text",
+            "apiId": "tc10",
+            "displayName": "TC10",
+            "description": "TC10 description",
+            "options": {
+                "useAsTitle": false,
+                "allowMultiple": {
+                    "active": true,
+                    "limitType": "none"
+                },
+                "localize": true,
+                "charLimit": {
+                    "limitType": "between",
+                    "min": 33,
+                    "max": 55,
+                    "customMessage": "Oops! Something went wrong...."
+                },
+                "required": true,
+                "setUnique": false,
+                "matchPattern": {
+                    "type": "NONE"
+                },
+                "restrictPattern": {
+                    "active": false
+                },
+                "initialValue": {
+                    "initial": false
+                },
+                "visibility": "Hidden"
+            }     
+        }
+    ]
+}
