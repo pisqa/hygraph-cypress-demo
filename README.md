@@ -16,7 +16,7 @@ In particular, verify correct functioning of the content editor based on the opt
 The number of field types and the various options available within each type makes this an interesting challenge.
 
 ## Test Design
-The attached [testDesign spreadsheet](/cypress/fixtures/testSuite.xlsx) (field-option sheet) gives a summary of the available schema field types and their options. The matrix is quite extensive and demands an efficient test design approach that delivers adequate coverage with reasonable effort.
+The attached [testDesign spreadsheet](/cypress/fixtures/testDesign.xlsx) (field-option sheet) gives a summary of the available schema field types and their options. The matrix is quite extensive and demands an efficient test design approach that delivers adequate coverage with reasonable effort.
 
 Lets see if our old friend [All-pairs testing](https://en.wikipedia.org/wiki/All-pairs_testing) can help us. The matrix is quite irregular (not all options apply to all fields), so for the sake of simplicity for this demo, lets focus on the first three field types. We use the [Pairwise Pict Online](https://pairwise.yuuniworks.com/) tool (additional documentation at [PICT 3.3 User’s Guide](http://www.amibugshare.com/pict/help.html)).
 
@@ -32,8 +32,8 @@ Combining full coverage (all 24 TCs) by stubbed tests, with a few full e2e test 
 We implement two categories of test case: Stubbed test cases which will provide full coverage of the All-pairs generated cases, and full end-to-end scenarios.
 
 In general we abstract UI interactions as much as possible (cypress Commands) to ensure the test code is maintainable, readable, and easily extensible. These abstractions are implemented in the e2e/helpers folder.
-### Stubbed Tests
 
+### Stubbed Tests
 For the purposes of this demo, we limit he scope to intercepting and verifying the *schema* creation action. In reality, we would also stub *content* creation to provide coverage for that functionality.
 
 The basic flow for each test case is the same:
@@ -50,4 +50,14 @@ Test case data is defined in [allPairsTests.json](/cypress/fixtures/allPairsTest
 The core engine for loading the test suite and executing the test steps is at  [stubbedTests.cy.js](/cypress/e2e/stubbedTests.cy.js)
 
 The first 10 test cases of the planned 24 have been implemented.
+
+### End-to-end tests
+The basic flow for each test case is similar, though the exact sequence of steps will vary for each case:
+1.	create a new schema
+2.	add the field under test, applying various options
+3.	add content and verify any restrictions are correctly imposed by the editor
+4.	publish the content
+5.	make an API  request to the public content endpoint and verify response
+
+Following the Agile Test Pyramid approach, we would include only a few e2e tests. Three example test cases are documented in  [testDesign spreadsheet](/cypress/fixtures/testDesign.xlsx) (field-option sheet)  and implemented in XXX
 
