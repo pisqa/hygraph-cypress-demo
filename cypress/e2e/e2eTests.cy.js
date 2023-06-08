@@ -10,18 +10,13 @@ describe('hygraph e2e tests', () => {
     beforeEach(() => {
 
         cy.login()
-        // cy.visit(`/${Cypress.config('hygraphProjectId')}/master`)
         cy.visit('/')
         cy.get(`[data-cy="${Cypress.config('hygraphProjectName')}"]`).click()
-        
 
         // close the quickstart-checklist pop-up
         cy.get('button[data-testid="close-quickstart-checklist"]', { timeout: 10000 }).click();
         cy.createModel()
-
-        //cy.goToModel()
     })
-
 
     it('TC01', () => {
 
@@ -56,12 +51,10 @@ describe('hygraph e2e tests', () => {
             }
         }
 
+        // create schema
         cy.checkTc(tc)
-
         cy.beginAddField(tc)
-
         cy.setBasicFieldOptions(tc.options)
-
         cy.setFieldLimit(tc.options.charLimit, 'text')
         cy.setMatchPattern(tc.options.matchPattern)
         cy.setRestrictPattern(tc.options.restrictPattern)
@@ -69,8 +62,8 @@ describe('hygraph e2e tests', () => {
         cy.setVisibility(tc.options.visibility)
         cy.saveField()
 
+        // create content
         var content = 'Hello World'
-
         cy.beginAddContent(1)
         cy.verifyContentFieldBasics(0, tc)
         cy.verifyInitialValue(0, tc)
@@ -101,7 +94,6 @@ describe('hygraph e2e tests', () => {
 
 
     it('TC02', () => {
-
         const tc = {
             tcTitle: "Single Field [Markdown/Multiple/Limit Entries/Not Unique/Not Required]",
             fieldType: 'Markdown',
@@ -134,18 +126,12 @@ describe('hygraph e2e tests', () => {
                 visibility: 'Read / Write'
             }
         }
-        const content = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
 
-
-
-
+        // create schema
         cy.checkTc(tc)
-
         cy.beginAddField(tc)
-
         cy.setBasicFieldOptions(tc.options)
         cy.setFieldLimit(tc.options.allowMultiple, 'entries')
-
         cy.setFieldLimit(tc.options.charLimit, 'text')
         cy.setMatchPattern(tc.options.matchPattern)
         cy.setRestrictPattern(tc.options.restrictPattern)
@@ -153,6 +139,8 @@ describe('hygraph e2e tests', () => {
         cy.setVisibility(tc.options.visibility)
         cy.saveField()
 
+        // create content
+        const content = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
         cy.beginAddContent(1)
         cy.verifyContentFieldBasics(0, tc)
         cy.verifyInitialValue(0, tc)
@@ -165,7 +153,6 @@ describe('hygraph e2e tests', () => {
         //verify 1 item in list
         cy.get('[data-testid=ListItem]').should('have.length', 1)
         cy.get('[data-testid=mde-preview]').invoke('text').should('eq', content);
-
         cy.saveAndPublishContent()
 
         // verify no unique restriction - create duplicate entries
@@ -184,7 +171,6 @@ describe('hygraph e2e tests', () => {
         cy.get('button[data-testid=AddToListButton]').click().wait(500)
         cy.get('[data-testid=ListItem]').should('have.length', 1)
 
-
         cy.get('textarea').eq(0).clear().type(content).wait(500)
         cy.get('button[data-testid=AddToListButton]').click().wait(500)
         cy.get('[data-testid=ListItem]').should('have.length', 2)
@@ -199,7 +185,6 @@ describe('hygraph e2e tests', () => {
 
         var modelName = Cypress.config('hygraphModelName')
         var fieldName = lod.camelCase(tc.displayName)
-
         var expectedRsBody =
             `{"data":{"${modelName}s":[{"${fieldName}":["${content}"]},` +
             `{"${fieldName}":["${content}"]}]}}`
@@ -208,7 +193,7 @@ describe('hygraph e2e tests', () => {
         cy.verifyEndpoint(tc, expectedRsBody)
     })
 
-    it.only('TC03', () => {
+    it('TC03', () => {
 
         const tc = {
             tcTitle: "TC03",
@@ -245,22 +230,11 @@ describe('hygraph e2e tests', () => {
                 visibility: 'Read / Write'
             }
         }
-        const content = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
 
-        /// TODO
 
-        // 1. verify locales
-        // 2. verify multiple not allowed
-        // 3. verify char limit
-        // 4. verify required=T
-        // 5. verify can duplicate
-        // 6  verify match pattern
-        // 7  verify no initial
-
+        // create schema
         cy.checkTc(tc)
-
         cy.beginAddField(tc)
-
         cy.setBasicFieldOptions(tc.options)
         cy.setFieldLimit(tc.options.charLimit, 'text')
         cy.setMatchPattern(tc.options.matchPattern)
@@ -269,16 +243,9 @@ describe('hygraph e2e tests', () => {
         cy.setVisibility(tc.options.visibility)
         cy.saveField()
 
+        // create content
+        const content = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
         cy.beginAddContent(1)
-
-
-
-
-
-
-
-
-
         cy.verifyContentFieldBasics(0, tc)
         cy.verifyInitialValue(0, tc)
         cy.verifyRequired(0, tc)
@@ -319,11 +286,9 @@ describe('hygraph e2e tests', () => {
 
         // verify 2 entries
         cy.get(`a[data-test="Content ${Cypress.config('hygraphModelName')}"]`).click()
-
         cy.get('[data-test=ContentViewContainer]').within(() => {
             cy.get('span:contains(Published)').should('have.length', 2)
         })
-
 
         //verify localised - add another entry
         cy.beginAddContent(1)
@@ -340,25 +305,15 @@ describe('hygraph e2e tests', () => {
         cy.get('textarea').eq(1).clear().type(esEmail)
 
         // save
-        cy.saveAndPublishContent()        
+        cy.saveAndPublishContent()
 
-
+        // verify api endpoint
         var modelName = Cypress.config('hygraphModelName')
         var fieldName = lod.camelCase(tc.displayName)
-
-        // var expectedRsBody =
-        //     `{"data":{"${modelName}s":[{"${fieldName}":["${content}"]},` +
-        //     `{"${fieldName}":["${content}"]}]}}`
-
         var expectedRsBody =
             `{"data":{"${modelName}s":[{"${fieldName}":"${goodEmail}"},` +
             `{"${fieldName}":"${goodEmail}"},` +
             `{"${fieldName}":"${enEmail}"}]}}`
-            
-            // {"data":{"demos":[{"tc03":"thisIsAValidEmail@somewhere.com"}, +
-            // {"tc03":"thisIsAValidEmail@somewhere.com"},{"tc03":"somebody@myhome.ie"}]}}
-
-        // verify api endpoint
         cy.verifyEndpoint(tc, expectedRsBody)
     })
 })
