@@ -1,4 +1,4 @@
-import { testSuite } from '../fixtures/testSuite10.json';
+import { testSuite } from '../fixtures/allPairsTests.json';
 
 describe('hygraph stubbed tests', () => {
 
@@ -27,7 +27,7 @@ describe('hygraph stubbed tests', () => {
     testSuite.forEach((tc, k) => {
         it(`test case ${k + 1}: ${tc.tcTitle}`, function () {
             cy.log(JSON.stringify(tc, null, 4))
-            cy.doItAll(tc)
+            cy.createFieldAndVerify(tc)
             cy.wait(10000)
         })
     })
