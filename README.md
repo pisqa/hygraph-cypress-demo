@@ -1,4 +1,4 @@
-# hygraph-cypress-demo (branch123)
+# hygraph-cypress-demo
 This project demonstrates analysis, design and implementation of a regression test suite for a complex enterprise Software as a Service (SaaS) product. It employs best-practice design and implementation techniques to ensure efficient delivery of a high coverage, maintainable automated test solution:
 - Pairwise test generation to give comprehensive functional test coverage
 - Combination of full end-to-end tests with stubbed UI tests to balance execution efficiency and robustness with e2e coverage requirements
